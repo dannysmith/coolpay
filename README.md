@@ -46,13 +46,13 @@ COOLPAY_API_KEY=ABC12345678
 COOLPAY_API_ENDPOINT_URL=https://coolpay.herokuapp.com/api
 ```
 
-Then run `rake spec`.
+Then run `rake spec`. On the first run, [VCR](https://github.com/vcr/vcr) will record most of the API calls and use the stored requests/responses for subsequent test runs. There is one test that will always hit the live API, though.
 
 ## Stuff this should have in it if it wasn't an exercise
 
-* [ ] Cleaner tests.
 * [ ] More sensible tests for `Connection#payments` and `Connection#recipients`.
-* [ ] A way of reauthorizing, in case the tokens time out.
+* [ ] A way of reauthorizing, in case the token times out.
+* [ ] A bunch of refactoring for brevity.
 
 ## Development
 

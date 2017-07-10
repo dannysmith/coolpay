@@ -5,6 +5,7 @@
 /coverage/
 /doc/
 /pkg/
+/spec/vcr_cassettes/
 /spec/reports/
 /tmp/
 .tags

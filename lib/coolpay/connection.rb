@@ -60,7 +60,7 @@ module Coolpay
     private
 
     def url(path)
-      "#{@api_endpoint_url}/#{path}"
+      "#{@api_endpoint_url}#{path}"
     end
 
     # Required parameters: method

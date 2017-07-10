@@ -36,7 +36,7 @@ describe Coolpay do
     end
   end
 
-  describe Coolpay::Connection do
+  describe Coolpay::Connection, :vcr do
     it 'raises an exception if endpoint is nil' do
       expect { Coolpay::Connection.new(username: valid_username,
                             api_key: valid_api_key,
@@ -54,7 +54,6 @@ describe Coolpay do
       expect(connection.token).not_to be_nil
     end
 
-
     context 'recipients' do
       it 'creates a recipient' do
         r = connection.create_recipient(name: 'Joe Bloggs')
@@ -70,17 +69,10 @@ describe Coolpay do
         expect(recipients).to be_a Array
       end
 
-      it 'searches for a recipient by name' do
-        random_name = SecureRandom.uuid
-        r = connection.create_recipient(name: random_name)
-        expect(connection.recipients(name: random_name).size).to eq 1
-      end
-
       it 'Returns an empty array when no users are found' do
         expect(connection.recipients(name: 'A user that definitely is not in the list')).to eq []
       end
     end
-
 
     context 'payments' do
       it 'creates a payment' do
@@ -100,6 +92,18 @@ describe Coolpay do
 
         payments = connection.payments
         expect(payments).to be_a Array
+      end
+    end
+  end
+
+  context 'without VCR' do
+    describe Coolpay::Connection do
+      it 'searches for a recipient by name' do
+        VCR.turn_off!
+        random_name = SecureRandom.uuid
+        r = connection.create_recipient(name: random_name)
+        expect(connection.recipients(name: random_name).size).to eq 1
+        VCR.turn_on!
       end
     end
   end

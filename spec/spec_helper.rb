@@ -2,12 +2,15 @@ require 'bundler/setup'
 require 'securerandom'
 require 'dannysmith_coolpay'
 # require 'webmock/rspec'
-# require 'vcr'
-#
-# VCR.configure do |c|
-#   c.cassette_library_dir = 'spec/fixtures'
-#   c.hook_into :webmock
-# end
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/vcr_cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
+
+WebMock.allow_net_connect!
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
