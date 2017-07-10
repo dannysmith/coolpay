@@ -1,5 +1,3 @@
-require 'awesome_print' # Remove in prod
-require 'pry' # Remove in prod
 require 'json'
 require 'httparty'
 

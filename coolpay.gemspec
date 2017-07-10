@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'coolpay/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'dannysmith-coolpay'
+  spec.name          = 'dannysmith_coolpay'
   spec.version       = Coolpay::VERSION
   spec.authors       = ['Danny Smith']
   spec.email         = ['hi@danny.is']

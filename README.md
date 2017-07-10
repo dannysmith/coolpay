@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dannysmith-coolpay'
+gem 'dannysmith_coolpay'
 ```
 
 And then execute:
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself with:
 
-    $ gem install dannysmith-coolpay
+    $ gem install dannysmith_coolpay
 
 ## Usage
 
