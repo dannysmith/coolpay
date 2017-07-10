@@ -8,10 +8,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'dannysmith_coolpay'
   spec.version       = Coolpay::VERSION
   spec.authors       = ['Danny Smith']
-  spec.email         = ['hi@danny.is']
+  spec.email         = ['danny@dasmith.co.uk']
 
   spec.summary       = 'Gem to wrap the Coolpay API.'
-  spec.description   = 'Gem to wrap the Coolpay API.'
+  spec.description   = 'Gem to wrap the Coolpay API and have a play with VCR for testing'
   spec.homepage      = 'http://github.com/dannysmith/coolpay'
   spec.license       = 'MIT'
 
