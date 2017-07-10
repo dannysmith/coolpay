@@ -1,6 +1,6 @@
 require 'bundler/setup'
 require 'securerandom'
-require 'coolpay'
+require 'dannysmith_coolpay'
 # require 'webmock/rspec'
 # require 'vcr'
 #
