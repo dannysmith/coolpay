@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'coolpay/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'coolpay'
+  spec.name          = 'dannysmith-coolpay'
   spec.version       = Coolpay::VERSION
   spec.authors       = ['Danny Smith']
   spec.email         = ['hi@danny.is']
@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-doc'
 
-  spec.add_dependency 'http'
+  spec.add_dependency 'httparty'
   spec.add_dependency 'json'
 end
