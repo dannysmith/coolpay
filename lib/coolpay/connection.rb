@@ -33,10 +33,11 @@ module Coolpay
       res = call_api '/payments', method: :post, body: {
         payment: {amount: amount, recipient_id: recipient_id, currency: currency}
       }
+      recipient_list = recipients()
       if res.code == 201
         Payment.new(
           amount: res['payment']['amount'],
-          recipient: find_by_id(res['payment']['recipient_id'], recipients),
+          recipient: find_by_id(res['payment']['recipient_id'], recipient_list),
           id: res['payment']['id'],
           currency: res['payment']['currency'],
           status: res['payment']['status']
@@ -46,11 +47,12 @@ module Coolpay
 
     def payments
       res = call_api '/payments', method: :get
+      recipient_list = recipients()
       if res.code == 200
         res['payments'].map{ |r| Payment.new(
           id: r['id'],
           amount: r['amount'],
-          recipient: find_by_id(r['recipient_id'], recipients),
+          recipient: find_by_id(r['recipient_id'], recipient_list),
           status: r['status'],
           currency: r['currency']
         ) }
