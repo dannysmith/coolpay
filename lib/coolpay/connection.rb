@@ -36,7 +36,7 @@ module Coolpay
       if res.code == 201
         Payment.new(
           amount: res['payment']['amount'],
-          recipient: find_recipient_by_id(res['payment']['recipient_id']),
+          recipient: find_by_id(res['payment']['recipient_id'], recipients),
           id: res['payment']['id'],
           currency: res['payment']['currency'],
           status: res['payment']['status']
@@ -50,7 +50,7 @@ module Coolpay
         res['payments'].map{ |r| Payment.new(
           id: r['id'],
           amount: r['amount'],
-          recipient: find_recipient_by_id(r['recipient_id']),
+          recipient: find_by_id(r['recipient_id'], recipients),
           status: r['status'],
           currency: r['currency']
         ) }
@@ -59,8 +59,8 @@ module Coolpay
 
     private
 
-    def find_recipient_by_id(id)
-      recipients.select{|r| r.id == id}[0]
+    def find_by_id(id, list)
+      list.select{|r| r.id == id}[0]
     end
 
     def url(path)
