@@ -20,10 +20,11 @@ describe Coolpay do
   end
 
   describe Coolpay::Payment do
+    let(:recipient) { Coolpay::Recipient.new name: 'Jake McFriend', id: '6e7b4cea-5957-11e6-8b77-86f30ca893d3'}
     let(:payment) { Coolpay::Payment.new id: '31db334f-9ac0-42cb-804b-09b2f899d4d2',
                                          amount: '10.5',
                                          currency: 'GBP',
-                                         recipient_id: '6e7b146e-5957-11e6-8b77-86f30ca893d3',
+                                         recipient: recipient,
                                          status: 'processing'
                                          }
     it 'should instansiate correctly' do
@@ -31,7 +32,7 @@ describe Coolpay do
       expect(payment.id).to eq '31db334f-9ac0-42cb-804b-09b2f899d4d2'
       expect(payment.amount).to eq '10.5'
       expect(payment.currency).to eq 'GBP'
-      expect(payment.recipient_id).to eq '6e7b146e-5957-11e6-8b77-86f30ca893d3'
+      expect(payment.recipient.id).to eq '6e7b4cea-5957-11e6-8b77-86f30ca893d3'
       expect(payment.status).to eq 'processing'
     end
   end
@@ -81,7 +82,7 @@ describe Coolpay do
         expect(payment).to be_a Coolpay::Payment
         expect(payment.amount).to eq '10.5'
         expect(payment.currency).to eq 'USD'
-        expect(payment.recipient_id).to eq recipient.id
+        expect(payment.recipient.id).to eq recipient.id
         expect(payment.id).not_to be_nil
       end
 

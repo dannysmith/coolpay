@@ -1,11 +1,11 @@
 module Coolpay
   class Payment
-    attr_reader :id, :amount, :currency, :recipient_id, :status
-    def initialize(id:,amount:,currency:,recipient_id:,status:)
+    attr_reader :id, :amount, :currency, :recipient, :status
+    def initialize(id:,amount:,currency:,recipient:,status:)
       @id = id
       @amount = amount
       @currency = currency
-      @recipient_id = recipient_id
+      @recipient = recipient
       @status = status
     end
   end
